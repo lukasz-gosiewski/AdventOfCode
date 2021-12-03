@@ -10,8 +10,8 @@ object Main {
 
     val resultA = solutionA("input-1.txt")
     val resultB = solutionB("input-1.txt")
-    println(s"Variant A solution: $resultA")
-    println(s"Variant B solution: $resultB")
+    println(s"Variant A result: $resultA")
+    println(s"Variant B result: $resultB")
   }
 
   def solutionB(fileName: String): Int = {
