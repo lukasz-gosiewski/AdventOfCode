@@ -4,13 +4,6 @@ package Day3
 import scala.io.Source
 
 object Main {
-  /**
-   * 011110111101 OX
-   * 011110010000 OX
-   *
-   * 110100101011 CO
-   * 110100101011 CO
-   */
 
   def main(args: Array[String]): Unit = {
     println("Day 3")
@@ -20,9 +13,6 @@ object Main {
 
     println(s"Variant A result: $resultA")
     println(s"Variant B result: $resultB")
-
-    println(getOxGenRating("input-3.txt"))
-    println(getCoRating("input-3.txt"))
   }
 
   def solutionA(fileName: String): Int = {
