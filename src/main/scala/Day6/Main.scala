@@ -1,7 +1,7 @@
 package com.gosiewski
 package Day6
 
-import scala.annotation.tailrec
+import scala.collection.mutable
 import scala.io.Source
 
 object Main {
@@ -9,22 +9,28 @@ object Main {
   def main(args: Array[String]): Unit = {
     println("Day 6")
 
-    val daysPast = 80
-    val initialFishList = Source.fromResource("input-6a.txt")
+    val daysPast = 256
+    val initialFishList = Source.fromResource("input-6.txt")
       .getLines()
       .toSeq
       .flatMap(_.split(","))
       .map(_.toInt)
-      .map(fish => multiplyFishByTime(fish, daysPast))
-      .sum
 
-    println(initialFishList)
-  }
+    val counters = mutable.ArrayBuffer(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L)
 
-  @tailrec
-  def multiplyFishByTime(fish: Int, time: Int): Int = {
-    if (time == 0) return 1
-    else if (fish == 0) return multiplyFishByTime(6, time - 1) + multiplyFishByTime(8, time - 1)
-    else multiplyFishByTime(fish - 1, time - 1)
+    initialFishList.foreach(fish => counters(fish) += 1)
+
+    for (_ <- 0 until daysPast) {
+      val newBorns = counters(0)
+
+      for (i <- 0 to 7) {
+        counters(i) = counters(i + 1)
+      }
+
+      counters(8) = newBorns
+      counters(6) += newBorns
+    }
+
+    println(counters.sum)
   }
 }
