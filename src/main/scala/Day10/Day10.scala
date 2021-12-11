@@ -14,6 +14,8 @@ object Day10 extends App {
   )
 
   {
+    println("Day 10")
+
     val checkersScoringMap: Map[Char, Int] = Map(
       ')' -> 3,
       ']' -> 57,
