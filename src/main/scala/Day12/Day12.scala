@@ -1,9 +1,11 @@
 package com.gosiewski
+package Day12
 
 import scala.io.Source
 
 object Day12 extends App {
   case class Node(name: String, isBig: Boolean)
+
   case class Connection(a: Node, b: Node)
 
   private val StartNode = Node("start", isBig = false)
