@@ -6,6 +6,7 @@ import scala.collection.mutable.ListBuffer
 import scala.io.Source
 
 object Day16 extends App {
+  // Can we somehow rework this with use of 3 types - Packet, OperatorPacket and ValuePacket? So that not every packet has value? Ot at least this value is calculated differently taking the type into cosideration?
   case class Packet(version: Int, typeID: Int, value: BigInt, subPackets: Seq[Packet])
 
   val hexToBinMap = Map(
@@ -131,8 +132,6 @@ object Day16 extends App {
       case 6 => if (calculateValue(packet.subPackets(0)) < calculateValue(packet.subPackets(1))) 1 else 0
       case 7 => if (calculateValue(packet.subPackets(0)) == calculateValue(packet.subPackets(1))) 1 else 0
       case _ => throw new IllegalArgumentException("This operation type is not supported")
-      // 539051743267
-      // 539051801941
     }
   }
 }
