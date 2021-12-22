@@ -34,10 +34,16 @@ object Day18 extends App {
   val input = getInput("input-18.txt")
   val sumAll = input.reduceLeft((a, b) => add(a, b))
   val sumMagnitude = calculateMagnitude(sumAll)
+  val allCombinationsOf2 = for {
+    left <- input
+    right <- input.filterNot(_ == left)
+  } yield (left, right)
+  val biggestMagnitudeOfSumOf2 = allCombinationsOf2.map(combination => calculateMagnitude(add(combination._1, combination._2))).max
 
   println("Day 18")
   println(s"The sum of all numbers: $sumAll")
   println(s"The magnitude of this sum: $sumMagnitude")
+  println(s"The biggest possible magnitude of sum of 2 numbers from the list: $biggestMagnitudeOfSumOf2")
 
   def getInput(filename: String): Seq[SnailFishNumber] =
     Source.fromResource(filename)
