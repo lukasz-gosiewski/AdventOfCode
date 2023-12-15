@@ -224,4 +224,4 @@ project/plugins/project/
 .lib/
 
 ### Fix for scala + intelij
-.idea
+.idea!/.java-version
